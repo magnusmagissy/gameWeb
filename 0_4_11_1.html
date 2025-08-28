@@ -15,155 +15,188 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
       color: #ffffff;
-      padding: 20px;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
+      cursor: none;
     }
 
     .container {
-      max-width: 800px;
+      width: 980px;
+      height: 700px;
       margin: 0 auto;
       background: rgba(0, 0, 0, 0.3);
       border-radius: 15px;
-      padding: 30px;
+      padding: 25px;
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .logo {
-      font-size: 2.5em;
-      font-weight: bold;
-      color: #9ACD32;
-      text-shadow: 0 0 20px rgba(154, 205, 50, 0.5);
-      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
 
     .version-info {
       background: rgba(220, 20, 60, 0.2);
-      padding: 15px;
+      padding: 12px 20px;
       border-radius: 10px;
       border-left: 4px solid #DC143C;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
+      text-align: center;
     }
 
     .version-current {
-      font-size: 1.1em;
+      font-size: 0.95em;
       color: #DC143C;
       font-weight: bold;
     }
 
     .version-latest {
-      font-size: 1.3em;
+      font-size: 1.1em;
       color: #9ACD32;
       font-weight: bold;
-      margin-top: 5px;
+      margin-top: 3px;
     }
 
     .missing-content {
       background: rgba(154, 205, 50, 0.1);
       border-radius: 10px;
       padding: 20px;
-      margin-bottom: 25px;
+      flex: 1;
       border: 1px solid rgba(154, 205, 50, 0.3);
+      display: flex;
+      flex-direction: column;
     }
 
     .missing-content h3 {
       color: #9ACD32;
       margin-bottom: 15px;
-      font-size: 1.4em;
-      text-align: center;
-    }
-
-    .content-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .content-item {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 12px;
-      border-radius: 8px;
-      border-left: 3px solid #9ACD32;
-    }
-
-    .content-item strong {
-      color: #9ACD32;
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .exclusive-highlight {
-      background: linear-gradient(90deg, rgba(220, 20, 60, 0.2), rgba(255, 215, 0, 0.2));
-      border: 1px solid #FFD700;
-      animation: pulse 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
-      100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
-    }
-
-    .cta-section {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background: linear-gradient(45deg, #9ACD32, #7CB342);
-      color: #000000;
-      padding: 15px 40px;
       font-size: 1.3em;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(154, 205, 50, 0.4);
-      margin: 10px;
+      text-align: center;
     }
 
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(154, 205, 50, 0.6);
-      background: linear-gradient(45deg, #7CB342, #9ACD32);
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      flex: 1;
+      margin-bottom: 15px;
     }
 
-    .discord-button {
-      background: linear-gradient(45deg, #7289DA, #5865F2);
-      color: white;
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
-    .discord-button:hover {
-      background: linear-gradient(45deg, #5865F2, #7289DA);
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
     .stats {
       display: flex;
       justify-content: space-around;
-      margin: 20px 0;
-      flex-wrap: wrap;
+      margin-bottom: 15px;
     }
 
     .stat {
       text-align: center;
-      margin: 10px;
     }
 
     .stat-number {
-      font-size: 2em;
+      font-size: 1.8em;
       font-weight: bold;
       color: #9ACD32;
     }
 
     .stat-label {
       color: #cccccc;
+      font-size: 0.8em;
+    }
+
+    .patron-benefits {
+      background: rgba(220, 20, 60, 0.3);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: left;
+      flex: 1;
+    }
+
+    .patron-benefits .title {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .patron-benefits .benefits-list {
       font-size: 0.9em;
+      line-height: 1.5;
+    }
+
+    .patron-benefits .benefits-list div {
+      margin-bottom: 6px;
+    }
+
+    .community-box {
+      background: rgba(154, 205, 50, 0.2);
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      border: 2px solid #9ACD32;
+    }
+
+    .community-box div {
+      font-size: 1em;
+      color: #9ACD32;
+      font-weight: bold;
+    }
+
+    .support-matters {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 4px solid #9ACD32;
+      flex: 1;
+    }
+
+    .support-title {
+      font-size: 1em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #9ACD32;
+    }
+
+    .support-content {
+      font-size: 0.85em;
+      line-height: 1.4;
+    }
+
+    .support-content div {
+      margin-bottom: 8px;
+    }
+
+    .support-content strong {
+      color: #9ACD32;
+    }
+
+    .support-note {
+      margin-top: 10px;
+      font-style: italic;
+      color: #cccccc;
+      font-size: 0.8em;
+    }
+
+    .cta-section {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .cta-subtext {
+      font-size: 0.8em;
+      color: #cccccc;
+      margin-top: 8px;
+      text-align: center;
     }
 
     .urgent {
@@ -174,7 +207,46 @@
 
     @keyframes flash {
       0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0.5; }
+      25%, 75% { opacity: 0.7; }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+      100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1000px) {
+      .container {
+        width: 95vw;
+        height: 95vh;
+        padding: 20px;
+      }
+
+      .main-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .stats {
+        gap: 20px;
+      }
+    }
+
+    @media (max-height: 720px) {
+      .container {
+        height: 95vh;
+        padding: 15px;
+      }
+
+      .version-info {
+        padding: 10px 15px;
+        margin-bottom: 15px;
+      }
+
+      .missing-content {
+        padding: 15px;
+      }
     }
   </style>
 </head>
@@ -182,7 +254,7 @@
 <div class="container">
 
   <div class="version-info">
-    <div class="version-current">You're playing: Free Build 0.4.11</div>
+    <div class="version-current">You're playing: Free Build 0.4.11.1</div>
     <div class="version-latest">Latest Version: 2.0.0 - <span class="urgent">Major Update Available!</span></div>
   </div>
 
@@ -204,50 +276,56 @@
       </div>
     </div>
 
-    <div style="background: rgba(220, 20, 60, 0.3); padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;">
-      <div style="font-size: 1.4em; font-weight: bold; margin-bottom: 10px;">What Latest Patrons Get:</div>
-      <div style="font-size: 1.1em; line-height: 1.6;">
-        ✅ <strong>Enhanced voice over</strong> for multiple characters<br>
-        ✅ <strong>Multiple new adult scenes</strong> with story integration<br>
-        ✅ <strong>New quests and locations</strong> to explore<br>
-        ✅ <strong>Reworked companion system</strong> - more tactical gameplay<br>
-        ✅ <strong>Latest improvements</strong> and ongoing development
-      </div>
-    </div>
+    <div class="main-grid">
+      <div class="left-column">
+        <div class="patron-benefits">
+          <div class="title">What Latest Patrons Get:</div>
+          <div class="benefits-list">
+            <div>✅ <strong>Enhanced voice over</strong> for multiple characters</div>
+            <div>✅ <strong>Multiple new adult scenes</strong> with story integration</div>
+            <div>✅ <strong>New quests and locations</strong> to explore</div>
+            <div>✅ <strong>Reworked companion system</strong> - more tactical gameplay</div>
+            <div>✅ <strong>Latest improvements</strong> and ongoing development</div>
+          </div>
+        </div>
 
-    <div style="background: rgba(154, 205, 50, 0.2); padding: 15px; border-radius: 10px; text-align: center; border: 2px solid #9ACD32;">
-      <div style="font-size: 1.2em; color: #9ACD32; font-weight: bold;">
-        Join our community getting regular updates and new content
+        <div class="community-box">
+          <div>Join our community getting regular updates and new content</div>
+        </div>
       </div>
-    </div>
 
-    <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #9ACD32;">
-      <div style="font-size: 1.1em; font-weight: bold; margin-bottom: 10px; color: #9ACD32;">Why Your Support Matters:</div>
-      <div style="line-height: 1.5;">
-        As an independent developer, your support directly enables:<br><br>
-        • <strong>Faster development</strong> - More time dedicated to the project<br>
-        • <strong>Quality improvements</strong> - Professional voice acting and assets<br>
-        • <strong>Regular updates</strong> - Consistent new content and fixes<br>
-        • <strong>Project expansion</strong> - New features and Steam release goal
-      </div>
-      <div style="margin-top: 15px; font-style: italic; color: #cccccc;">
-        Every patron helps us create the best possible experience and reach our Steam release goal.
+      <div class="right-column">
+        <div class="support-matters">
+          <div class="support-title">Why Your Support Matters:</div>
+          <div class="support-content">
+            <div style="margin-bottom: 10px; font-weight: bold; color: #FFD700;">As an independent developer:</div>
+            <div>• <strong>Faster development</strong> - More time dedicated to the project</div>
+            <div>• <strong>Quality improvements</strong> - Professional voice acting and assets</div>
+            <div>• <strong>Regular updates</strong> - Consistent new content and fixes</div>
+            <div>• <strong>Project expansion</strong> - New features and Steam release goal</div>
+            <div class="support-note">
+              Every patron helps us create the best possible experience and reach our Steam release goal.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="cta-section">
-    <a href="https://www.patreon.com/magissy" class="cta-button">
-      🔓 Unlock Full Experience - Patreon
-    </a>
-    <br>
-    <a href="https://discord.gg/xNQC45u" class="cta-button discord-button">
-      💬 Join Community - Discord
-    </a>
+    <div style="margin-bottom: 15px; font-size: 1.3em; font-weight: bold; color: #9ACD32;">
+      🔓 Unlock Full Experience - Support us on:
+    </div>
+    <div style="font-size: 1.5em; font-weight: bold; color: #FFD700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);">
+      patreon.com/magissy
+    </div>
+    <div style="margin-top: 10px; font-size: 1.1em; color: #9ACD32;">
+      💬 Join Community and get instant access to latest builds
+    </div>
+  </div>
 
-    <p style="margin-top: 15px; color: #cccccc; font-size: 0.9em;">
-      Starting from $5/month • Cancel anytime • Instant access to latest builds
-    </p>
+  <div class="cta-subtext">
+    Starting from $5/month • Cancel anytime • Copy address above to your browser
   </div>
 </div>
 </body>
