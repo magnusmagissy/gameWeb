@@ -310,5 +310,22 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // Also disable right-click via mousedown event for extra security
+  document.addEventListener('mousedown', function(e) {
+    if (e.button === 2) { // Right mouse button
+      e.preventDefault();
+      return false;
+    }
+  });
+</script>
+
 </body>
 </html>
