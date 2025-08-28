@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magissy - Unlock Full Experience</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #ffffff;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #9ACD32;
+      text-shadow: 0 0 20px rgba(154, 205, 50, 0.5);
+      margin-bottom: 10px;
+    }
+
+    .version-info {
+      background: rgba(220, 20, 60, 0.2);
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 4px solid #DC143C;
+      margin-bottom: 25px;
+    }
+
+    .version-current {
+      font-size: 1.1em;
+      color: #DC143C;
+      font-weight: bold;
+    }
+
+    .version-latest {
+      font-size: 1.3em;
+      color: #9ACD32;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .missing-content {
+      background: rgba(154, 205, 50, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+      border: 1px solid rgba(154, 205, 50, 0.3);
+    }
+
+    .missing-content h3 {
+      color: #9ACD32;
+      margin-bottom: 15px;
+      font-size: 1.4em;
+      text-align: center;
+    }
+
+    .content-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .content-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px;
+      border-radius: 8px;
+      border-left: 3px solid #9ACD32;
+    }
+
+    .content-item strong {
+      color: #9ACD32;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .exclusive-highlight {
+      background: linear-gradient(90deg, rgba(220, 20, 60, 0.2), rgba(255, 215, 0, 0.2));
+      border: 1px solid #FFD700;
+      animation: pulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+      100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+    }
+
+    .cta-section {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(45deg, #9ACD32, #7CB342);
+      color: #000000;
+      padding: 15px 40px;
+      font-size: 1.3em;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(154, 205, 50, 0.4);
+      margin: 10px;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(154, 205, 50, 0.6);
+      background: linear-gradient(45deg, #7CB342, #9ACD32);
+    }
+
+    .discord-button {
+      background: linear-gradient(45deg, #7289DA, #5865F2);
+      color: white;
+    }
+
+    .discord-button:hover {
+      background: linear-gradient(45deg, #5865F2, #7289DA);
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+      margin: 10px;
+    }
+
+    .stat-number {
+      font-size: 2em;
+      font-weight: bold;
+      color: #9ACD32;
+    }
+
+    .stat-label {
+      color: #cccccc;
+      font-size: 0.9em;
+    }
+
+    .urgent {
+      color: #FFD700;
+      font-weight: bold;
+      animation: flash 1.5s ease-in-out infinite;
+    }
+
+    @keyframes flash {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="version-info">
+    <div class="version-current">You're playing: Free Build 0.4.11</div>
+    <div class="version-latest">Latest Version: 2.0.0 - <span class="urgent">Major Update Available!</span></div>
+  </div>
+
+  <div class="missing-content">
+    <h3>Your Build is 7 versions behind!</h3>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number">7</div>
+        <div class="stat-label">Versions Behind</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">8+</div>
+        <div class="stat-label">New Characters</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Improvements</div>
+      </div>
+    </div>
+
+    <div style="background: rgba(220, 20, 60, 0.3); padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;">
+      <div style="font-size: 1.4em; font-weight: bold; margin-bottom: 10px;">What Latest Patrons Get:</div>
+      <div style="font-size: 1.1em; line-height: 1.6;">
+        ✅ <strong>Enhanced voice over</strong> for multiple characters<br>
+        ✅ <strong>Multiple new adult scenes</strong> with story integration<br>
+        ✅ <strong>New quests and locations</strong> to explore<br>
+        ✅ <strong>Reworked companion system</strong> - more tactical gameplay<br>
+        ✅ <strong>Latest improvements</strong> and ongoing development
+      </div>
+    </div>
+
+    <div style="background: rgba(154, 205, 50, 0.2); padding: 15px; border-radius: 10px; text-align: center; border: 2px solid #9ACD32;">
+      <div style="font-size: 1.2em; color: #9ACD32; font-weight: bold;">
+        Join our community getting regular updates and new content
+      </div>
+    </div>
+
+    <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #9ACD32;">
+      <div style="font-size: 1.1em; font-weight: bold; margin-bottom: 10px; color: #9ACD32;">Why Your Support Matters:</div>
+      <div style="line-height: 1.5;">
+        As an independent developer, your support directly enables:<br><br>
+        • <strong>Faster development</strong> - More time dedicated to the project<br>
+        • <strong>Quality improvements</strong> - Professional voice acting and assets<br>
+        • <strong>Regular updates</strong> - Consistent new content and fixes<br>
+        • <strong>Project expansion</strong> - New features and Steam release goal
+      </div>
+      <div style="margin-top: 15px; font-style: italic; color: #cccccc;">
+        Every patron helps us create the best possible experience and reach our Steam release goal.
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <a href="https://www.patreon.com/magissy" class="cta-button">
+      🔓 Unlock Full Experience - Patreon
+    </a>
+    <br>
+    <a href="https://discord.gg/xNQC45u" class="cta-button discord-button">
+      💬 Join Community - Discord
+    </a>
+
+    <p style="margin-top: 15px; color: #cccccc; font-size: 0.9em;">
+      Starting from $5/month • Cancel anytime • Instant access to latest builds
+    </p>
+  </div>
+</div>
+</body>
+</html>
