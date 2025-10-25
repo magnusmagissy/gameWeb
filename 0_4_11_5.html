@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magissy - Unlock Full Experience</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #ffffff;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 950px;
+      height: 700px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+
+    .version-info {
+      background: rgba(220, 20, 60, 0.2);
+      padding: 10px 15px;
+      border-radius: 10px;
+      border-left: 4px solid #DC143C;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .version-current {
+      font-size: 0.9em;
+      color: #DC143C;
+      font-weight: bold;
+    }
+
+    .version-latest {
+      font-size: 1em;
+      color: #9ACD32;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+
+    .missing-content {
+      background: rgba(154, 205, 50, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      border: 1px solid rgba(154, 205, 50, 0.3);
+      height: 580px;
+      overflow: hidden;
+    }
+
+    .missing-content h3 {
+      color: #9ACD32;
+      margin-bottom: 12px;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    .stats {
+      display: -webkit-flex;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 15px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .stat {
+      text-align: center;
+      flex: 1;
+    }
+
+    .stat-number {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #9ACD32;
+    }
+
+    .stat-label {
+      color: #cccccc;
+      font-size: 0.75em;
+    }
+
+    .patron-benefits {
+      background: rgba(220, 20, 60, 0.3);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    .patron-benefits .title {
+      font-size: 1em;
+      font-weight: bold;
+      margin-bottom: 8px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .benefits-list {
+      font-size: 0.8em;
+      line-height: 1.3;
+    }
+
+    .benefits-list div {
+      margin-bottom: 4px;
+      padding: 2px 0;
+    }
+
+    .community-box {
+      background: rgba(154, 205, 50, 0.2);
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      border: 2px solid #9ACD32;
+      margin-bottom: 12px;
+    }
+
+    .community-box div {
+      font-size: 0.9em;
+      color: #9ACD32;
+      font-weight: bold;
+    }
+
+    .support-matters {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px;
+      border-radius: 10px;
+      border-left: 4px solid #9ACD32;
+      margin-bottom: 15px;
+    }
+
+    .support-title {
+      font-size: 0.95em;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #9ACD32;
+    }
+
+    .support-content {
+      font-size: 0.8em;
+      line-height: 1.3;
+    }
+
+    .support-intro {
+      color: #FFD700;
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 0.85em;
+    }
+
+    .support-list {
+      margin-bottom: 8px;
+    }
+
+    .support-list div {
+      margin-bottom: 3px;
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .support-list div::before {
+      content: "•";
+      color: #9ACD32;
+      position: absolute;
+      left: 0;
+    }
+
+    .support-list strong {
+      color: #9ACD32;
+    }
+
+    .support-note {
+      font-style: italic;
+      color: #cccccc;
+      font-size: 0.75em;
+      text-align: center;
+    }
+
+    .cta-section {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+
+    .cta-main {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #9ACD32;
+      margin-bottom: 5px;
+    }
+
+    .patreon-address {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #FFD700;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      margin-bottom: 5px;
+    }
+
+    .cta-community {
+      font-size: 0.9em;
+      color: #9ACD32;
+    }
+
+    .cta-subtext {
+      font-size: 0.75em;
+      color: #cccccc;
+      text-align: center;
+    }
+
+    .urgent {
+      color: #FFD700;
+      font-weight: bold;
+      animation: flash 1.5s ease-in-out infinite;
+    }
+
+    @keyframes flash {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0.7; }
+    }
+
+    /* Fix for old Chrome */
+    .container * {
+      -webkit-transform: translateZ(0);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="version-info">
+    <div class="version-current">You're playing: Free Build 0.4.11.1</div>
+    <div class="version-latest">Latest Version: 2.0.0 - <span class="urgent">Major Update Available!</span></div>
+  </div>
+
+  <div class="missing-content">
+    <h3>Your Build is 7 versions behind!</h3>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number">7</div>
+        <div class="stat-label">Versions Behind</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">8+</div>
+        <div class="stat-label">New Characters</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Improvements</div>
+      </div>
+    </div>
+
+    <div class="patron-benefits">
+      <div class="title">What Latest Patrons Get:</div>
+      <div class="benefits-list">
+        <div>✅ <strong>Enhanced voice over</strong> for multiple characters</div>
+        <div>✅ <strong>Multiple new adult scenes</strong> with story integration</div>
+        <div>✅ <strong>New quests and locations</strong> to explore</div>
+        <div>✅ <strong>Reworked companion system</strong> - more tactical gameplay</div>
+        <div>✅ <strong>Latest improvements</strong> and ongoing development</div>
+      </div>
+    </div>
+
+    <div class="community-box">
+      <div>Join our community getting regular updates and new content</div>
+    </div>
+
+    <div class="support-matters">
+      <div class="support-title">Why Your Support Matters:</div>
+      <div class="support-content">
+        <div class="support-intro">As an independent developer:</div>
+        <div class="support-list">
+          <div><strong>Faster development</strong> - More time dedicated to the project</div>
+          <div><strong>Quality improvements</strong> - Professional voice acting and assets</div>
+          <div><strong>Regular updates</strong> - Consistent new content and fixes</div>
+          <div><strong>Project expansion</strong> - New features and Steam release goal</div>
+        </div>
+        <div class="support-note">
+          Every patron helps us create the best possible experience and reach our Steam release goal.
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <div class="cta-main">🔓 Unlock Full Experience - Support us on:</div>
+      <div class="patreon-address">patreon.com/magissy</div>
+      <div class="cta-community">💬 Join Community and get instant access to latest builds</div>
+    </div>
+
+    <div class="cta-subtext">
+      Starting from $5/month • Cancel anytime • Copy address above to your browser
+    </div>
+  </div>
+</div>
+
+<script>
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // Also disable right-click via mousedown event for extra security
+  document.addEventListener('mousedown', function(e) {
+    if (e.button === 2) { // Right mouse button
+      e.preventDefault();
+      return false;
+    }
+  });
+</script>
+
+</body>
+</html>
