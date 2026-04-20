@@ -1,331 +1,547 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magissy - Unlock Full Experience</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magissy - Now on Steam</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap');
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #ffffff;
-            height: 100vh;
-            overflow: hidden;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .container {
-            width: 950px;
-            height: 700px;
-            margin: 0 auto;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-        }
+    body {
+      font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(27, 159, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 90%, rgba(102, 192, 244, 0.08) 0%, transparent 50%),
+        linear-gradient(145deg, #070b14 0%, #0a1424 40%, #0c1a30 100%);
+      color: #ffffff;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .version-info {
-            background: rgba(220, 20, 60, 0.2);
-            padding: 10px 15px;
-            border-radius: 10px;
-            border-left: 4px solid #DC143C;
-            margin-bottom: 15px;
-            text-align: center;
-        }
+    .container {
+      width: 950px;
+      height: 700px;
+      margin: 0 auto;
+      background:
+        linear-gradient(160deg, rgba(10, 15, 30, 0.92) 0%, rgba(15, 25, 50, 0.88) 100%);
+      border-radius: 14px;
+      padding: 20px 26px;
+      border: 1px solid rgba(66, 133, 244, 0.22);
+      overflow: hidden;
+      position: relative;
+      box-shadow:
+        0 0 80px rgba(27, 159, 255, 0.1),
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
 
-        .version-current {
-            font-size: 0.9em;
-            color: #DC143C;
-            font-weight: bold;
-        }
+    /* animated grid backdrop */
+    .container::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(102, 192, 244, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102, 192, 244, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      animation: gridShift 30s linear infinite;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
 
-        .version-latest {
-            font-size: 1em;
-            color: #9ACD32;
-            font-weight: bold;
-            margin-top: 2px;
-        }
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #1b9fff, #66c0f4, #1b9fff, transparent);
+      opacity: 0.9;
+      z-index: 2;
+    }
 
-        .missing-content {
-            background: rgba(154, 205, 50, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            border: 1px solid rgba(154, 205, 50, 0.3);
-            height: 580px;
-            overflow: hidden;
-        }
+    /* corner accents */
+    .corner {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-color: #66c0f4;
+      opacity: 0.5;
+      z-index: 2;
+    }
+    .corner.tl { top: 10px; left: 10px; border-top: 2px solid; border-left: 2px solid; }
+    .corner.tr { top: 10px; right: 10px; border-top: 2px solid; border-right: 2px solid; }
+    .corner.bl { bottom: 10px; left: 10px; border-bottom: 2px solid; border-left: 2px solid; }
+    .corner.br { bottom: 10px; right: 10px; border-bottom: 2px solid; border-right: 2px solid; }
 
-        .missing-content h3 {
-            color: #9ACD32;
-            margin-bottom: 12px;
-            font-size: 1.2em;
-            text-align: center;
-        }
+    .container > *:not(.corner) {
+      position: relative;
+      z-index: 1;
+    }
 
-        .stats {
-            display: -webkit-flex;
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 10px;
-            border-radius: 8px;
-        }
+    /* TOP BAR */
+    .top-bar {
+      background: linear-gradient(135deg, rgba(231, 76, 60, 0.12), rgba(27, 40, 56, 0.75) 40%, rgba(20, 30, 48, 0.6));
+      padding: 9px 18px;
+      border-radius: 8px;
+      border-left: 3px solid #e74c3c;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+    }
 
-        .stat {
-            text-align: center;
-            flex: 1;
-        }
+    .top-old {
+      font-size: 0.82em;
+      color: #e74c3c;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        .stat-number {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #9ACD32;
-        }
+    .top-old::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #e74c3c;
+      box-shadow: 0 0 8px #e74c3c;
+      animation: pulse 2s ease-in-out infinite;
+    }
 
-        .stat-label {
-            color: #cccccc;
-            font-size: 0.75em;
-        }
+    .top-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.18);
+    }
 
-        .patron-benefits {
-            background: rgba(220, 20, 60, 0.3);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            text-align: left;
-        }
+    .top-new {
+      font-size: 0.9em;
+      color: #c6d4e1;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .patron-benefits .title {
-            font-size: 1em;
-            font-weight: bold;
-            margin-bottom: 8px;
-            text-align: center;
-            color: #ffffff;
-        }
+    .top-new .blink {
+      color: #ffffff;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1b9fff, #66c0f4);
+      padding: 2px 10px;
+      border-radius: 4px;
+      animation: pulse 2s ease-in-out infinite;
+      box-shadow: 0 0 12px rgba(27, 159, 255, 0.4);
+    }
 
-        .benefits-list {
-            font-size: 0.8em;
-            line-height: 1.3;
-        }
+    /* HEADLINE */
+    .headline {
+      text-align: center;
+      padding: 2px 0;
+    }
 
-        .benefits-list div {
-            margin-bottom: 4px;
-            padding: 2px 0;
-        }
+    .headline h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8em;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
 
-        .community-box {
-            background: rgba(154, 205, 50, 0.2);
-            padding: 10px;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid #9ACD32;
-            margin-bottom: 12px;
-        }
+    .headline h2 .white { color: #ffffff; }
+    .headline h2 .blue {
+      background: linear-gradient(135deg, #1b9fff 0%, #66c0f4 50%, #a5dcff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(102, 192, 244, 0.3);
+    }
 
-        .community-box div {
-            font-size: 0.9em;
-            color: #9ACD32;
-            font-weight: bold;
-        }
+    .headline-sub {
+      font-size: 0.85em;
+      color: #8b9bb4;
+      margin-top: 4px;
+      letter-spacing: 0.3px;
+    }
 
-        .support-matters {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 12px;
-            border-radius: 10px;
-            border-left: 4px solid #9ACD32;
-            margin-bottom: 15px;
-        }
+    /* BENEFITS */
+    .benefits {
+      background: linear-gradient(135deg, rgba(27, 40, 56, 0.7), rgba(15, 25, 40, 0.5));
+      padding: 13px 20px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(66, 192, 244, 0.18);
+      position: relative;
+    }
 
-        .support-title {
-            font-size: 0.95em;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #9ACD32;
-        }
+    .benefits-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #66c0f4;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
 
-        .support-content {
-            font-size: 0.8em;
-            line-height: 1.3;
-        }
+    .benefits-title::before,
+    .benefits-title::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(102, 192, 244, 0.4), transparent);
+    }
 
-        .support-intro {
-            color: #FFD700;
-            font-weight: bold;
-            margin-bottom: 8px;
-            font-size: 0.85em;
-        }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px 24px;
+      font-size: 0.85em;
+    }
 
-        .support-list {
-            margin-bottom: 8px;
-        }
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .support-list div {
-            margin-bottom: 3px;
-            padding-left: 10px;
-            position: relative;
-        }
+    .benefit-item .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2ecc71, #27ae60);
+      color: #0a0e1a;
+      font-size: 0.72em;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+    }
 
-        .support-list div::before {
-            content: "•";
-            color: #9ACD32;
-            position: absolute;
-            left: 0;
-        }
+    .benefit-item strong {
+      color: #dce6f0;
+      font-weight: 500;
+    }
 
-        .support-list strong {
-            color: #9ACD32;
-        }
+    /* BUY ONCE */
+    .buy-once {
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.18), rgba(39, 174, 96, 0.08));
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid rgba(46, 204, 113, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .support-note {
-            font-style: italic;
-            color: #cccccc;
-            font-size: 0.75em;
-            text-align: center;
-        }
+    .buy-once::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.15), transparent);
+      animation: shimmer 4s infinite;
+    }
 
-        .cta-section {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 8px;
-        }
+    .buy-once-main {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1em;
+      color: #2ecc71;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      position: relative;
+    }
 
-        .cta-main {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #9ACD32;
-            margin-bottom: 5px;
-        }
+    .buy-once-sub {
+      font-size: 0.75em;
+      color: #8b9bb4;
+      margin-top: 2px;
+      position: relative;
+    }
 
-        .patreon-address {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #FFD700;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-            margin-bottom: 5px;
-        }
+    /* REVIEW BOX */
+    .review-box {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.14), rgba(255, 180, 0, 0.04));
+      padding: 13px 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      text-align: center;
+    }
 
-        .cta-community {
-            font-size: 0.9em;
-            color: #9ACD32;
-        }
+    .review-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.05em;
+      font-weight: 700;
+      color: #FFD700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 6px;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
 
-        .cta-subtext {
-            font-size: 0.75em;
-            color: #cccccc;
-            text-align: center;
-        }
+    .review-stars {
+      display: inline-flex;
+      gap: 2px;
+      margin-right: 6px;
+    }
 
-        .urgent {
-            color: #FFD700;
-            font-weight: bold;
-            animation: flash 1.5s ease-in-out infinite;
-        }
+    .review-stars span {
+      animation: starTwinkle 2.4s ease-in-out infinite;
+    }
 
-        @keyframes flash {
-            0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0.7; }
-        }
+    .review-stars span:nth-child(2) { animation-delay: 0.2s; }
+    .review-stars span:nth-child(3) { animation-delay: 0.4s; }
+    .review-stars span:nth-child(4) { animation-delay: 0.6s; }
+    .review-stars span:nth-child(5) { animation-delay: 0.8s; }
 
-        /* Fix for old Chrome */
-        .container * {
-            -webkit-transform: translateZ(0);
-        }
-    </style>
+    .review-text {
+      font-size: 0.84em;
+      color: #c6d4e1;
+      line-height: 1.55;
+    }
+
+    .review-text strong {
+      color: #FFD700;
+      font-weight: 600;
+    }
+
+    .review-heart {
+      margin-top: 7px;
+      font-size: 0.78em;
+      color: #a8b5c7;
+      font-style: italic;
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      background:
+        radial-gradient(ellipse at center, rgba(27, 159, 255, 0.22) 0%, rgba(27, 159, 255, 0.05) 70%),
+        linear-gradient(135deg, rgba(27, 159, 255, 0.12), rgba(102, 192, 244, 0.06));
+      padding: 14px 20px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(66, 192, 244, 0.35);
+      animation: glow 3s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-label {
+      font-size: 0.78em;
+      color: #8b9bb4;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+    }
+
+    .cta-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.9em;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 2.5px;
+      text-shadow:
+        0 0 30px rgba(66, 192, 244, 0.5),
+        0 0 60px rgba(66, 192, 244, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      line-height: 1;
+    }
+
+    .cta-name .steam-icon {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1b9fff, #171a21);
+      border-radius: 50%;
+      box-shadow: 0 0 18px rgba(27, 159, 255, 0.5);
+    }
+
+    .cta-name .steam-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: #ffffff;
+    }
+
+    .cta-name .steam {
+      background: linear-gradient(135deg, #1b9fff, #66c0f4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cta-search {
+      font-size: 0.84em;
+      color: #66c0f4;
+      font-weight: 600;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .cta-search .term {
+      background: linear-gradient(135deg, rgba(27, 159, 255, 0.25), rgba(66, 192, 244, 0.15));
+      padding: 3px 14px;
+      border-radius: 5px;
+      border: 1px solid rgba(66, 192, 244, 0.45);
+      color: #ffffff;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 14px rgba(27, 159, 255, 0.25);
+    }
+
+    .footer-text {
+      font-size: 0.7em;
+      color: #4a5d75;
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.55; }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow:
+          0 0 8px rgba(66, 192, 244, 0.15),
+          inset 0 0 20px rgba(27, 159, 255, 0.05);
+      }
+      50% {
+        box-shadow:
+          0 0 30px rgba(66, 192, 244, 0.4),
+          inset 0 0 30px rgba(27, 159, 255, 0.1);
+      }
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    @keyframes gridShift {
+      0% { background-position: 0 0; }
+      100% { background-position: 40px 40px; }
+    }
+
+    @keyframes starTwinkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+    }
+
+    .container * {
+      -webkit-transform: translateZ(0);
+    }
+  </style>
 </head>
 <body>
 <div class="container">
 
-    <div class="version-info">
-        <div class="version-current">You're playing: Build 0.4.11.5</div>
-        <div class="version-latest">Latest Version: 6.0.0 - <span class="urgent">Major Update Available!</span></div>
+  <span class="corner tl"></span>
+  <span class="corner tr"></span>
+  <span class="corner bl"></span>
+  <span class="corner br"></span>
+
+  <div class="top-bar">
+    <div class="top-old">You're playing: Outdated Build</div>
+    <div class="top-divider"></div>
+    <div class="top-new">Full Version <span class="blink">NOW on Steam!</span></div>
+  </div>
+
+  <div class="headline">
+    <h2>
+      <span class="white">Magissy is finally </span><span class="blue">on Steam</span>
+    </h2>
+    <div class="headline-sub">The complete game with all content is available right now</div>
+  </div>
+
+  <div class="benefits">
+    <div class="benefits-title">What you get on Steam</div>
+    <div class="benefits-grid">
+      <div class="benefit-item"><span class="check">&#10003;</span> <strong>Complete game, final version</strong></div>
+      <div class="benefit-item"><span class="check">&#10003;</span> <strong>All adult scenes, full story</strong></div>
+      <div class="benefit-item"><span class="check">&#10003;</span> <strong>All bugs fixed</strong></div>
+      <div class="benefit-item"><span class="check">&#10003;</span> <strong>All quests and locations</strong></div>
+      <div class="benefit-item"><span class="check">&#10003;</span> <strong>Multi-language support</strong></div>
+      <div class="benefit-item"><span class="check">&#10003;</span> <strong>Automatic updates forever</strong></div>
     </div>
+  </div>
 
-    <div class="missing-content">
-        <h3>Your Build is 10 versions behind!</h3>
+  <div class="buy-once">
+    <div class="buy-once-main">Buy once. Own forever. No subscriptions.</div>
+    <div class="buy-once-sub">One purchase, everything included</div>
+  </div>
 
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-number">10</div>
-                <div class="stat-label">Versions Behind</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">8+</div>
-                <div class="stat-label">New Characters</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Improvements</div>
-            </div>
-        </div>
-
-        <div class="patron-benefits">
-            <div class="title">What Latest Patrons Get:</div>
-            <div class="benefits-list">
-        <div>✅ <strong>All important bugs fixed!</strong></div>
-                <div>✅ <strong>Multi-Language Support!</strong></div>
-                <div>✅ <strong>Multiple new adult scenes</strong> with story integration</div>
-                <div>✅ <strong>New quests and locations</strong> to explore</div>
-                <div>✅ <strong>Reworked companion system</strong> - more tactical gameplay</div>
-                <div>✅ <strong>Latest improvements</strong> and ongoing development</div>
-            </div>
-        </div>
-
-        <div class="community-box">
-            <div>Join our community getting regular updates and new content</div>
-        </div>
-
-        <div class="support-matters">
-            <div class="support-title">Why Your Support Matters:</div>
-            <div class="support-content">
-                <div class="support-intro">As an independent developer:</div>
-                <div class="support-list">
-                    <div><strong>Faster development</strong> - More time dedicated to the project</div>
-                    <div><strong>Quality improvements</strong> - Professional voice acting and assets</div>
-                    <div><strong>Regular updates</strong> - Consistent new content and fixes</div>
-                    <div><strong>Project expansion</strong> - New features and Steam release goal</div>
-                </div>
-                <div class="support-note">
-                    Every patron helps us create the best possible experience and reach our Steam release goal.
-                </div>
-            </div>
-        </div>
-
-        <div class="cta-section">
-            <div class="cta-main">🔓 Unlock Full Experience - Support us on:</div>
-            <div class="patreon-address">patreon.com/magissy</div>
-            <div class="cta-community">💬 Join Community and get instant access to latest builds</div>
-        </div>
-
-        <div class="cta-subtext">
-            Starting from $5/month • Cancel anytime • Copy address above to your browser
-        </div>
+  <div class="review-box">
+    <div class="review-title">
+      <span class="review-stars"><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span></span>
+      We need your help on launch day
     </div>
+    <div class="review-text">
+      You already know and love this game.<br>
+      A <strong>Steam review from you</strong> can make or break our launch.<br>
+      Without early reviews, Steam won't show our game to anyone.
+    </div>
+    <div class="review-heart">Buy it, play it, leave a review. That's all we ask. &#10084;</div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-label">Get the full game now</div>
+    <div class="cta-name">
+      MAGISSY <span class="steam">on Steam</span>
+    </div>
+    <div class="cta-search">Search <span class="term">Magissy</span> on Steam</div>
+  </div>
+
+  <div class="footer-text">Your purchase directly supports development of future content and projects.</div>
+
 </div>
 
 <script>
-    // Disable right-click context menu
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        return false;
-    });
-
-    // Also disable right-click via mousedown event for extra security
-    document.addEventListener('mousedown', function(e) {
-        if (e.button === 2) { // Right mouse button
-            e.preventDefault();
-            return false;
-        }
-    });
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+  });
+  document.addEventListener('mousedown', function(e) {
+    if (e.button === 2) {
+      e.preventDefault();
+      return false;
+    }
+  });
 </script>
 
 </body>
